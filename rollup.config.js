@@ -1,5 +1,7 @@
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
+import uglify from "rollup-plugin-uglify-es";
+import resolve from "rollup-plugin-node-resolve";
 
 import pkg from "./package.json";
 
@@ -15,5 +17,12 @@ export default {
       file: pkg.module
     }
   ],
-  plugins: [typescript({}), commonjs({ extensions: [".js", ".ts"] })]
+  plugins: [
+    resolve(),
+    typescript({
+      rollupCommonJSResolveHack: true
+    }),
+    commonjs({ extensions: [".js", ".ts"] }),
+    uglify()
+  ]
 };
