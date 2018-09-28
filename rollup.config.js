@@ -1,21 +1,19 @@
-import typescript from "rollup-plugin-typescript";
+import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
+
+import pkg from "./package.json";
 
 export default {
   input: "src/index.ts",
   output: [
     {
       format: "cjs",
-      file: "dist/bundle.js"
+      file: pkg.main
     },
     {
-      format: "esm",
-      file: "dist/bundle.esm.js"
+      format: "es",
+      file: pkg.module
     }
   ],
-  // dest: "./dist/bundle.js",
-  plugins: [
-    typescript({ module: "CommonJS" }),
-    commonjs({ extensions: [".js", ".ts"] }) // the ".ts" extension is required
-  ]
+  plugins: [typescript({}), commonjs({ extensions: [".js", ".ts"] })]
 };
