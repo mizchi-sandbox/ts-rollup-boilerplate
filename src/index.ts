@@ -1,5 +1,5 @@
-import sub from "./sub";
 import { createStore } from "redux";
+import sub from "./sub";
 
 export default class X {
   f() {
