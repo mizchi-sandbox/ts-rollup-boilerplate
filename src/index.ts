@@ -1,12 +1,11 @@
 import sub from "./sub";
-
-const _: any = require("lodash");
+import { createStore } from "redux";
 
 export default class X {
   f() {
     console.log(sub);
   }
-  flatten(ret: string[][]): string[] {
-    return _.flatten(ret);
+  configure(reducer: any): string[] {
+    return createStore(reducer);
   }
 }

@@ -18,10 +18,10 @@ export default {
     }
   ],
   plugins: [
-    resolve(),
     typescript({
       rollupCommonJSResolveHack: true
     }),
+    resolve({ jsnext: true }),
     commonjs({ extensions: [".js", ".ts"] }),
     uglify()
   ]
