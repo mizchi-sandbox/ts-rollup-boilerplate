@@ -1,3 +1,3 @@
 export default {
-  sub: 1
+  v: 1
 };
